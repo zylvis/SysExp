@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Description>
+
+<div class="ml-5 container">
+    @{ foreach (var item in Model)
+        {
+
+            @Html.Raw(item.TextArea2)
+
+        }
+
+    }
+</div>

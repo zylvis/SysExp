@@ -1,0 +1,3 @@
+# farrow
+Trading project
+etc

@@ -1,0 +1,73 @@
+﻿@model SysExp.Models.Description
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Description</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Picture" class="control-label"></label>
+                <input asp-for="Picture" class="form-control" />
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TextArea1" class="control-label"></label>
+                <div>@Html.TextAreaFor(m => Model.TextArea1)</div>
+                <span asp-validation-for="TextArea1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TextArea2" class="control-label"></label>
+                <div>@Html.TextAreaFor(m => Model.TextArea2)</div>
+                <span asp-validation-for="TextArea2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TextArea3" class="control-label"></label>
+                <div>@Html.TextAreaFor(m => Model.TextArea3)</div>
+                <span asp-validation-for="TextArea3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TextArea4" class="control-label"></label>
+                <div>@Html.TextAreaFor(m => Model.TextArea4)</div>
+                <span asp-validation-for="TextArea4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+        </form>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+
+</div>
+
+
+
+@section Scripts{
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: "lists",
+            menubar: 'file edit format'
+        });</script>
+}
+

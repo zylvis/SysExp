@@ -1,0 +1,89 @@
+﻿@model SysExp.Models.ViewModels.ToChartViewModel
+
+
+@{
+    ViewData["Title"] = "ToChartAll";
+
+    string chartTitle = "Portfolio: " + Enum.GetName(typeof(SysExp.Models.ViewModels.ToChartViewModel.EPortfolios), @Model.Portfolios);
+    string chartUnit = "NetProfit";
+
+}
+
+    <div class="text-center">
+        <a asp-action="Index" asp-controller="Home" asp-area="Visitor" class="btn btn-light" style="color: #FFFFFF; background-color: #FC6471; border-style: solid">Return To Menu</a>
+    </div>
+
+
+<br />
+<div class="container">
+    <form asp-action="ToChart" asp-controller="ChartData" class="text-light text-center" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <label class="col-form-label" style="color: #363636">Select portfolio from a list:</label>
+        <div class="form-group row justify-content-center">
+            
+            <select asp-for="Portfolios" asp-items="@Html.GetEnumSelectList<SysExp.Models.ViewModels.ToChartViewModel.EPortfolios>()" class="form-control col-4"></select>
+            <div>     </div>
+            <input type="submit" value="Submit" class="btn btn-light ml-2" style="color: #FFFFFF; background-color: #266DD3" />
+        </div>
+    </form>
+</div>
+
+<div class="text-center">
+
+    <div class="col-12" id="curve_chart" style="max-width: 1200px; height: 400px"></div>
+
+</div>
+
+<br/>
+
+<div class="row align-items-center ml-1">
+    *Paper trading Results.<a asp-action="Index" asp-controller="Home" asp-area="Visitor" asp-route-filterString="Paper Trading" class="text-center btn" style="color:#266DD3">See more about paper trading.</a>
+    Next update after will be after @Model.ChartDataList.Last().Date.AddMonths(2).ToString("d/M/yyyy");
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Year', 'ES CZHV' ,'ES Baras', 'All CHZV', 'All Baras'],
+
+            @{
+                foreach (var data in Model.SortedListData) {
+
+                 <text>['@data.Key.ToString("yyyy/M/dd")', @data.Value[0], @data.Value[1], @data.Value[2], @data.Value[3]],</text>
+                }
+
+            }
+        ]);
+        
+        var options = {
+            
+            backgroundColor: '#FFFFFF',
+            series: {
+                0: { color: '#FC6471' },
+                1: { color: '#266DD3' },
+                2: { color: '#7F2CCB' },
+                3: { color: '#363636' },
+            },
+            title: '@chartTitle',
+           
+            legend: { position: 'right' },
+            pointsVisible: false,
+            lineWidth: 2,
+            hAxis: { title: 'Date', format: 'yyyy-MM-dd', width: 20},
+            vAxis: {title: '@chartUnit', width: 150, fontSize: 1 },
+            width: '100%',
+            height: '100%',
+            chartArea: {width: '45%', height: '50%', backgroundColor: '#FFFFFF'}
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+        chart.draw(data, options);
+    }
+</script>
+
+

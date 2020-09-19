@@ -1,0 +1,297 @@
+﻿@model SysExp.Models.ViewModels.HomeIndexViewModel
+@using SysExp.Models
+@using SysExp.Utility
+
+@{
+    ViewData["Title"] = "Home Page";
+
+
+}
+
+<!--<header style="background-color: #808080; ">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" style="color: #266DD3" asp-area="Visitor" asp-controller="Home" asp-action="Index"><img src="~/Images/SysExpLogo.png" height="25" class="mb-1" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1 justify-content-center">
+                    @foreach (var item in Model.Category)
+                    {
+                        @if (item.Name == "About")
+                        {
+                            <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow ml-1 active font-weight-bolder text-muted" style="color: #363636;background-color: #FFFFFF">@item.Name</li></a>
+                        }
+                        @if (item.Name == "Strategies")
+                        {
+                            <a asp-action="Index" asp-controller="Home" asp-route-filterString="@item.Name"><li class="l btn shadow ml-1 active font-weight-bolder text-muted" style="color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+                        }
+                        @if (item.Name == "Portfolio")
+                        {
+                            <a asp-action="Index" asp-route-filterString="@item.Name"><li class=" btn shadow ml-1 active font-weight-bolder text-muted" style="color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+                        }
+                        @if (item.Name == "Charts")
+                        {
+                            <a asp-action="AllSChart" asp-controller="Home" asp-area="Visitor" asp-route-filterString="@item.Name">
+                                <li class="btn shadow ml-1 active font-weight-bolder text-muted" style="color: #363636; background-color: #FFFFFF">
+                                    @item.Name
+                                </li>
+                            </a>
+                        }
+                        @if (item.Name == "Paper Trading")
+                        {
+                            <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow ml-1 active font-weight-bolder text-muted" style="color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+                        }
+                        @if (item.Name == "Contacts")
+                        {
+                            <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow ml-1 active font-weight-bolder text-muted" style="color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+                        }
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>-->
+<!--<div  style="background-color: #363636; border-radius: 10px">
+    <ul class="list-inline form-inline justify-content-center align-items-center p-2">
+        @foreach (var item in Model.Category)
+        {
+            @if (item.Name == "About")
+            {
+                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</li></a>
+            }
+            @if (item.Name == "Strategies")
+            {
+                <a asp-action="Index" asp-controller="Home" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+            }
+
+            @if (item.Name == "Portfolio")
+            {
+                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+            }
+
+            @if (item.Name == "Charts")
+            {
+                <a asp-action="AllSChart" asp-controller="Home" asp-area="Visitor" asp-route-filterString="@item.Name">
+                    <li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">
+                        @item.Name
+                    </li>
+                </a>
+            }
+
+            @if (item.Name == "Paper Trading")
+            {
+                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+            }
+
+            @if (item.Name == "Contacts")
+            {
+                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+            }
+        }
+    </ul>
+</div>-->
+
+<div class="container" style="z-index: 100; position: fixed; top: 50px; left: 50%; transform: translateX(-50%)">
+    <div class="row align-items-center">
+        <div id="menuextend" class="scrollmenu text-center col-10" style="border-radius: 10px; background-color: #ffffff">
+
+            @foreach (var item in Model.Category)
+            {
+                @if (item.Name == "About")
+                {
+                    <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
+                }
+                @if (item.Name == "Strategies")
+                {
+                    <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
+                }
+
+                @if (item.Name == "Portfolio")
+                {
+                    <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
+                }
+
+                @if (item.Name == "Charts")
+                {
+                    <a asp-action="AllSChart" asp-controller="Home" asp-area="Visitor" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">
+                        @item.Name
+                    </a>
+                }
+
+                @if (item.Name == "Paper Trading")
+                {
+                    <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
+                }
+
+                @if (item.Name == "Contacts")
+                {
+                    <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
+                }
+            }
+
+        </div>
+
+        <div id="dots" class="text-center text-muted align-items-center col-1" style="background-color: white; font-size: 26px">
+            <i class="far fa-hand-point-left"></i>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+@if (Model.CategoryFilter.Count() == 1)
+{
+    @foreach (var item in Model.CategoryFilter)
+    {
+
+        <!--<h4 class="font-weight-bolder" style="color:#266DD3">
+        @item.Name
+        </h4>-->
+
+        <div style="color: #363636; background-color: #FFFFFF">
+            <partial name="_TextArea1Partial" model="@Model.Description.Where(u => u.Name.Equals(item.Name))" />
+        </div>
+    }
+}
+else
+{
+    <br />
+    <br />
+    <div id="itopmargin" class="container-fluid">
+
+        <div class="row  align-items-center">
+            <div id="carouselExampleSlidesOnly" class="carousel slide col-6" data-ride="carousel" data-interval="3000">
+                <div class="carousel-inner text-center" style="color: #363636; font-size: 26px">
+                    <div class="carousel-item active">
+                        Trend folowing and breakout logic.
+                    </div>
+                    <div class="carousel-item">
+                        Long research.
+                    </div>
+                    <div class="carousel-item">
+                        Transparent results.
+                    </div>
+                    <div class="carousel-item">
+                        Scalable.
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light col-6 text-center">
+                <a asp-action="AllSChart" asp-controller="Home" asp-area="Visitor"><img src="~/Images/StileShape.png" class="img-fluid" /></a>
+            </div>
+        </div>
+
+        <br />
+        <br />
+       
+        <div style="background-color: #ffffff">
+            @foreach (var item in Model.Category)
+            {
+                @if (item.Name == "Strategies")
+                {
+
+                    <a asp-action="Index" asp-controller="Home" asp-route-filterString="@item.Name" class="font-weight-bolder text-muted col-12" style="background-color: #FFFFFF">@item.Name</a>
+                    <div style="color: #363636; border-radius: 10px; border: 3px solid #e2e2e2; background-color: #ffffff; padding: 5px; margin-top: 5px; margin-bottom: 5px">
+                        @{
+
+                            foreach (var description in Model.Description.Where(u => u.Name.Equals(item.Name)))
+                            {
+                                @Html.Raw(description.TextArea1)
+                            }
+                        }
+                    </div>
+
+                }
+                @if (item.Name == "Paper Trading")
+                {
+
+                    <a asp-action="Index" asp-controller="Home" asp-route-filterString="@item.Name" class="font-weight-bolder text-muted col-12" style="background-color: #FFFFFF">@item.Name</a>
+                    <div style="color: #363636; border-radius: 10px; border: 3px solid #e2e2e2; background-color: #ffffff; padding: 5px; margin-top: 5px; margin-bottom: 5px">
+                        @{
+
+                            foreach (var description in Model.Description.Where(u => u.Name.Equals(item.Name)))
+                            {
+                                @Html.Raw(description.TextArea1)
+                            }
+                        }
+                    </div>
+                }
+
+                @if (item.Name == "Portfolio")
+                {
+                    <a asp-action="Index" asp-controller="Home" asp-route-filterString="@item.Name" class="font-weight-bolder text-muted col-12" style="background-color: #FFFFFF">@item.Name</a>
+                    <div style="color: #363636; border-radius: 10px; border: 3px solid #e2e2e2; background-color: #ffffff; padding: 5px; margin-top: 5px; margin-bottom: 5px">
+                        @{
+
+                            foreach (var description in Model.Description.Where(u => u.Name.Equals(item.Name)))
+                            {
+                                @Html.Raw(description.TextArea1)
+                            }
+                        }
+                        <a asp-action="AllSChart" asp-controller="Home" asp-area="Visitor" class="bnt btn-light btn-block btn text-center text-white" style="background-color: #FC6471">Got To Charts</a>
+                        <div style="height: 5px"></div>
+                    </div>
+                }
+
+                @if (item.Name == "About")
+                {
+                    <a asp-action="Index" asp-controller="Home" asp-route-filterString="@item.Name" class="font-weight-bolder text-muted col-12" style="background-color: #FFFFFF">@item.Name</a>
+                    <div style="color: #363636; border-radius: 10px; border: 3px solid #e2e2e2; background-color: #ffffff; padding: 5px; margin-top: 5px; margin-bottom: 5px">
+                        <img src="~/Images/ZJ.jpg.png" width="100" />
+                        @{
+
+                            foreach (var description in Model.Description.Where(u => u.Name.Equals(item.Name)))
+                            {
+                                @Html.Raw(description.TextArea1)
+                            }
+                        }
+                    </div>
+                }
+
+            }
+        </div>
+
+
+    </div>
+
+
+}
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        if (screen.width >= 1200) {
+            $("#dots").hide();
+        }
+        else {
+
+            $("#dots").show();
+        }
+
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        if (screen.width >= 1200) {
+            $("#menuextend").addClass("col-12");
+        }
+
+        else {
+            $("#itopmargin").addClass("indexmargin")
+        }
+
+    });
+</script>
+

@@ -1,0 +1,261 @@
+﻿@model SysExp.Models.ViewModels.HomeIndexViewModel
+@using SysExp.Models
+
+@{
+
+
+    string chartTitle = "Portfolio: " + Enum.GetName(typeof(SysExp.Models.ViewModels.ToChartViewModel.EPortfolios), @Model.Portfolios);
+    string chartUnit = "NetProfit";
+
+
+}
+
+
+<!--<div style="background-color: #363636; border-radius: 10px">
+    <ul class="list-inline form-inline justify-content-center align-items-center p-2">
+        @foreach (var item in Model.Category)
+        {
+            @if (item.Name == "About")
+            {
+                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</li></a>
+            }
+            @if (item.Name == "Strategies")
+            {
+                <a asp-action="Index" asp-controller="Home" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+            }
+
+            @if (item.Name == "Portfolio")
+            {
+                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+            }
+
+            @if (item.Name == "Charts")
+            {
+                <a asp-action="AllSChart" asp-controller="Home" asp-area="Visitor" asp-route-filterString="@item.Name">
+                    <li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">
+                        @item.Name
+                    </li>
+                </a>
+            }
+
+            @if (item.Name == "Paper Trading")
+            {
+                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+            }
+
+            @if (item.Name == "Contacts")
+            {
+                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+            }
+        }
+    </ul>
+</div>-->
+
+    <div class="container" style="z-index: 100; position: fixed; top: 50px; left: 50%; transform: translateX(-50%)">
+        <div class="row align-items-center">
+            <div id="menuextend" class="scrollmenu text-center col-10" style="border-radius: 10px; background-color: #ffffff">
+
+                @foreach (var item in Model.Category)
+                {
+                    @if (item.Name == "About")
+                    {
+                        <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
+                    }
+                    @if (item.Name == "Strategies")
+                    {
+                        <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
+                    }
+
+                    @if (item.Name == "Portfolio")
+                    {
+                        <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
+                    }
+
+                    @if (item.Name == "Charts")
+                    {
+                        <a asp-action="AllSChart" asp-controller="Home" asp-area="Visitor" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">
+                            @item.Name
+                        </a>
+                    }
+
+                    @if (item.Name == "Paper Trading")
+                    {
+                        <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
+                    }
+
+                    @if (item.Name == "Contacts")
+                    {
+                        <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
+                    }
+                }
+
+            </div>
+
+            <div id="dots" class="text-center text-muted align-items-center col-1" style="background-color: white; font-size: 26px">
+                <i class="far fa-hand-point-left"></i>
+            </div>
+
+
+        </div>
+    </div>
+
+
+@if (Model.CategoryFilter.Count() == 1)
+{
+    @foreach (var item in Model.CategoryFilter)
+    {
+
+        <!--<h4 class="font-weight-bolder" style="color:#266DD3">
+        @item.Name
+        </h4>-->
+
+        if (item.Name == "Charts")
+        {
+
+            <div class="text-center" style="margin-top:120px">
+
+                <div class="text-center">
+
+                    <div class="col-12" id="line_chart" style="max-width: 1200px; height: 400px"></div>
+
+                </div>
+
+                <form asp-action="OneSChart" asp-controller="Home" asp-area="Visitor" asp-route-filterString="@item.Name" class="text-light text-center" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <label class="col-form-label" style="color: #363636">Select portfolio from a list:</label>
+                    <div class="form-group row justify-content-center">
+
+                        <select asp-for="Portfolios" asp-items="@Html.GetEnumSelectList<SysExp.Models.ViewModels.ToChartViewModel.EPortfolios>()" class="form-control col-4 col-lg-2" onchange="this.form.submit()"></select>
+                        <div>     </div>
+                        <!--<input type="submit" value="Submit" class="btn btn-light ml-2" style="color: #FFFFFF; background-color: #266DD3" />-->
+                    </div>
+                </form>
+
+                <br />
+
+                <div class="col-12 align-items-center text-center ml-1">
+                    *Paper trading Results.<a asp-action="Index" asp-controller="Home" asp-area="Visitor" asp-route-filterString="Paper Trading" class="text-center" style="color:#266DD3"> See more about paper trading.</a>
+                    Next update after will be after @Model.ChartDataList.Last().Date.AddMonths(2).ToString("d/M/yyyy");
+                </div>
+            </div>
+
+        }
+
+        <div style="color: #363636; background-color: #FFFFFF">
+            <partial name="_TextArea1Partial" model="@Model.Description.Where(u => u.Name.Equals(item.Name))" />
+        </div>
+
+    }
+}
+else
+{
+    <br />
+    <br />
+    <div class="Container">
+
+        <div class="row  align-items-center">
+            <div id="carouselExampleSlidesOnly" class="carousel slide col-6" data-ride="carousel">
+                <div class="carousel-inner text-center" style="color: #266DD9; font-size: 26px">
+                    <div class="carousel-item active">
+                        Trend folowing and breakout logic.
+                    </div>
+                    <div class="carousel-item">
+                        Long research.
+                    </div>
+                    <div class="carousel-item">
+                        Transparent results.
+                    </div>
+                    <div class="carousel-item">
+                        Scalable.
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light col-6">
+                <img src="~/Images/StileShape.png" class="img-fluid mb-1 ml-1 mr-1" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Date', '@Enum.GetName(typeof(SysExp.Models.ViewModels.ToChartViewModel.EPortfolios), @Model.Portfolios)'],
+
+            @{
+
+
+                foreach (var data in Model.ChartDataList) {
+
+                 <text>['@data.DateToString', @data.Equity],</text>
+                }
+
+            }
+        ]);
+
+
+        var options = {
+
+
+
+            backgroundColor: '#FFFFFF',
+            series: {
+                0: {
+                    color: '#266DD3',
+
+                },
+                            },
+            title: '@chartTitle',
+
+            legend: {position: 'right', textStyle: {fontSize: 8}},
+
+            pointsVisible: false,
+            lineWidth: 2,
+            hAxis: { title: 'Date', format: 'yyyy-MM-dd', width: 20, textStyle: {fontSize: 10}},
+            vAxis: { title: '@chartUnit', width: 150, height: 10, fontSize: 1 , textStyle: {fontSize: 10} },
+            width: '100%',
+            height: '100%',
+            chartArea: {width: '45%', height: '50%', backgroundColor: '#FFFFFF'}
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('line_chart'));
+        chart.draw(data, options);
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        if (screen.width >= 1200) {
+            $("#dots").hide();
+        }
+        else {
+
+            $("#dots").show();
+        }
+
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        if (screen.width >= 1200) {
+            $("#menuextend").addClass("col-12");
+        }
+
+
+    });
+</script>
+
+

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ChartData>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+    <a asp-action="CreateFromFile" class="btn btn-primary">CreateFromFile</a>
+    <a asp-action="ToChartAll" class="btn btn-success">To Chart</a>
+    <a asp-action="DeleteAll" class="btn btn-danger">DeleteAll</a>
+
+</p>
+<table class="table text-light" style="background-color: #212738">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model => model.Date)</a>
+                <!--@Html.DisplayNameFor(model => model.Date)-->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateToString)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Equity)
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["PortfolioSortParm"]">@Html.DisplayNameFor(model => model.Portfolio)</a>
+                <!--@Html.DisplayNameFor(model => model.Portfolio)-->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Strategy)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateToString)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Equity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Portfolio.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Strategy.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
