@@ -10,94 +10,50 @@
 
 }
 
-
-<!--<div style="background-color: #363636; border-radius: 10px">
-    <ul class="list-inline form-inline justify-content-center align-items-center p-2">
-        @foreach (var item in Model.Category)
-        {
-            @if (item.Name == "About")
-            {
-                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</li></a>
-            }
-            @if (item.Name == "Strategies")
-            {
-                <a asp-action="Index" asp-controller="Home" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">@item.Name</li></a>
-            }
-
-            @if (item.Name == "Portfolio")
-            {
-                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">@item.Name</li></a>
-            }
-
-            @if (item.Name == "Charts")
-            {
-                <a asp-action="AllSChart" asp-controller="Home" asp-area="Visitor" asp-route-filterString="@item.Name">
-                    <li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">
-                        @item.Name
-                    </li>
-                </a>
-            }
-
-            @if (item.Name == "Paper Trading")
-            {
-                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">@item.Name</li></a>
-            }
-
-            @if (item.Name == "Contacts")
-            {
-                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">@item.Name</li></a>
-            }
-        }
-    </ul>
-</div>-->
-
-    <div class="container" style="z-index: 100; position: fixed; top: 50px; left: 50%; transform: translateX(-50%)">
-        <div class="row align-items-center">
-            <div id="menuextend" class="scrollmenu text-center col-10" style="border-radius: 10px; background-color: #ffffff">
-
-                @foreach (var item in Model.Category)
-                {
-                    @if (item.Name == "About")
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1 justify-content-center">
+                    @foreach (var item in Model.Category)
                     {
-                        <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
-                    }
-                    @if (item.Name == "Strategies")
-                    {
-                        <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
-                    }
+                        @if (item.Name == "About")
+                        {
+                            <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-normal" style="color: #ffffff;background-color: #366DD3; width: 125px">@item.Name</li></a>
+                        }
+                        @if (item.Name == "Strategies")
+                        {
+                            <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-normal" style="color: #ffffff;background-color: #366DD3; width: 125px">@item.Name</li></a>
+                        }
+                        @if (item.Name == "Portfolio")
+                        {
+                            <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-normal" style="color: #ffffff;background-color: #366DD3; width: 125px">@item.Name</li></a>
+                        }
+                        @if (item.Name == "Charts")
+                        {
+                            <a asp-action="AllSChart" asp-controller="Home" asp-area="Visitor" asp-route-filterString="@item.Name">
+                                <li class="btn shadow m-1 active font-weight-normal" style="color: #ffffff;background-color: #366DD3; width: 125px">@item.Name</li>
+                            </a>
+                        }
+                        @if (item.Name == "Paper Trading")
+                        {
+                            <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-normal" style="color: #ffffff;background-color: #366DD3; width: 125px">@item.Name</li></a>
+                        }
+                        @if (item.Name == "Contacts")
+                        {
+                            <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-normal" style="color: #ffffff;background-color: #366DD3; width: 125px">@item.Name</li></a>
+                        }
 
-                    @if (item.Name == "Portfolio")
-                    {
-                        <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
                     }
-
-                    @if (item.Name == "Charts")
-                    {
-                        <a asp-action="AllSChart" asp-controller="Home" asp-area="Visitor" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; color: #363636; background-color: #FFFFFF">
-                            @item.Name
-                        </a>
-                    }
-
-                    @if (item.Name == "Paper Trading")
-                    {
-                        <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
-                    }
-
-                    @if (item.Name == "Contacts")
-                    {
-                        <a asp-action="Index" asp-route-filterString="@item.Name" class="btn shadow m-1 active font-weight-bolder" style="min-width: 120px; px; color: #363636;background-color: #FFFFFF">@item.Name</a>
-                    }
-                }
-
+                </ul>
             </div>
-
-            <div id="dots" class="text-center text-muted align-items-center col-1" style="background-color: white; font-size: 26px">
-                <i class="far fa-hand-point-left"></i>
-            </div>
-
-
         </div>
-    </div>
+    </nav>
+
+
 
 
 @if (Model.CategoryFilter.Count() == 1)
@@ -112,7 +68,7 @@
         if (item.Name == "Charts")
         {
 
-            <div class="text-center" style="margin-top:120px">
+            <div class="text-center">
 
                 <div class="text-center">
 

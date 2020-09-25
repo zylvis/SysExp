@@ -8,10 +8,8 @@
 
 }
 
-<!--<header style="background-color: #808080; ">
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow">
         <div class="container">
-            <a class="navbar-brand" style="color: #266DD3" asp-area="Visitor" asp-controller="Home" asp-action="Index"><img src="~/Images/SysExpLogo.png" height="25" class="mb-1" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,31 +20,29 @@
                     {
                         @if (item.Name == "About")
                         {
-                            <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow ml-1 active font-weight-bolder text-muted" style="color: #363636;background-color: #FFFFFF">@item.Name</li></a>
+                            <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-normal" style="color: #ffffff;background-color: #366DD3; width: 125px">@item.Name</li></a>
                         }
                         @if (item.Name == "Strategies")
                         {
-                            <a asp-action="Index" asp-controller="Home" asp-route-filterString="@item.Name"><li class="l btn shadow ml-1 active font-weight-bolder text-muted" style="color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-normal" style="color: #ffffff;background-color: #366DD3; width: 125px">@item.Name</li></a>
                         }
                         @if (item.Name == "Portfolio")
                         {
-                            <a asp-action="Index" asp-route-filterString="@item.Name"><li class=" btn shadow ml-1 active font-weight-bolder text-muted" style="color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-normal" style="color: #ffffff;background-color: #366DD3; width: 125px">@item.Name</li></a>
                         }
                         @if (item.Name == "Charts")
                         {
                             <a asp-action="AllSChart" asp-controller="Home" asp-area="Visitor" asp-route-filterString="@item.Name">
-                                <li class="btn shadow ml-1 active font-weight-bolder text-muted" style="color: #363636; background-color: #FFFFFF">
-                                    @item.Name
-                                </li>
+                                <li class="btn shadow m-1 active font-weight-normal" style="color: #ffffff;background-color: #366DD3; width: 125px">@item.Name</li>
                             </a>
                         }
                         @if (item.Name == "Paper Trading")
                         {
-                            <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow ml-1 active font-weight-bolder text-muted" style="color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-normal" style="color: #ffffff;background-color: #366DD3; width: 125px">@item.Name</li></a>
                         }
                         @if (item.Name == "Contacts")
                         {
-                            <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow ml-1 active font-weight-bolder text-muted" style="color: #363636; background-color: #FFFFFF">@item.Name</li></a>
+                <a asp-action="Index" asp-route-filterString="@item.Name"><li class="btn shadow m-1 active font-weight-normal" style="color: #ffffff;background-color: #366DD3; width: 125px">@item.Name</li></a>
                         }
 
                     }
@@ -54,7 +50,8 @@
             </div>
         </div>
     </nav>
-</header>-->
+
+
 <!--<div  style="background-color: #363636; border-radius: 10px">
     <ul class="list-inline form-inline justify-content-center align-items-center p-2">
         @foreach (var item in Model.Category)
@@ -94,10 +91,9 @@
         }
     </ul>
 </div>-->
-
-<div class="container" style="z-index: 100; position: fixed; top: 50px; left: 50%; transform: translateX(-50%)">
+<!--<div class="container" style="z-index: 100; position: fixed; top: 50px; left: 50%; transform: translateX(-50%)">
     <div class="row align-items-center">
-        <div id="menuextend" class="scrollmenu text-center col-10" style="border-radius: 10px; background-color: #ffffff">
+        <div id="menuextend" class="scrollmenu text-center col-12" style="border-radius: 10px; background-color: #ffffff">
 
             @foreach (var item in Model.Category)
             {
@@ -135,13 +131,13 @@
 
         </div>
 
-        <div id="dots" class="text-center text-muted align-items-center col-1" style="background-color: white; font-size: 26px">
+        @*<div id="dots" class="text-center text-muted align-items-center col-1" style="background-color: white; font-size: 26px">
             <i class="far fa-hand-point-left"></i>
-        </div>
+        </div>*@
 
 
     </div>
-</div>
+</div>-->
 
 
 
@@ -190,7 +186,7 @@ else
 
         <br />
         <br />
-       
+
         <div style="background-color: #ffffff">
             @foreach (var item in Model.Category)
             {
@@ -244,7 +240,7 @@ else
                 {
                     <a asp-action="Index" asp-controller="Home" asp-route-filterString="@item.Name" class="font-weight-bolder text-muted col-12" style="background-color: #FFFFFF">@item.Name</a>
                     <div style="color: #363636; border-radius: 10px; border: 3px solid #e2e2e2; background-color: #ffffff; padding: 5px; margin-top: 5px; margin-bottom: 5px">
-                        <img src="~/Images/ZJ.jpg.png" width="100" />
+                        <img src="~/Images/ZJ.jpg.png" width="100" class="mb-2" />
                         @{
 
                             foreach (var description in Model.Description.Where(u => u.Name.Equals(item.Name)))
