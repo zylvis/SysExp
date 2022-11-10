@@ -1,4 +1,5 @@
 # farrow
+MVC APP
 Trading project
 
 This web app is an extension of my research of trading ang creating strategies.
